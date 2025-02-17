@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áreas</title>
+    <link rel="stylesheet" href="../css/0.97_inicio.css">
+    <link rel="stylesheet" href="../css/0.01_modal.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="">
+            </div>
+            <div class="user-info">
+                <p id="userName"></p> <!-- Aqui será exibido o nome do usuário -->
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0)" id="configButton">Ir para Configurações</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div>            
+        </div>
+    </header>
+    <div class="container">
+        <aside id="sidebar-left">
+            <div class="sidebar">
+                <a href="../html_principal/15_inicio.html" class="active">
+                    <img src="../icones/31_casa.svg" alt="Ícone de login">
+                    <h3>Início</h3>
+                </a>
+                <a href="../html_principal/2_treeview.html">
+                    <img src="../icones/3_areas.svg" alt="Ícone de login">
+                    <h3>Consulta</h3>
+                </a>
+                <a href="../html_principal/3_dashboard.html" >
+                    <img src="../icones/4_dashboard.svg" alt="Ícone de dashboard">
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="../html_principal/4_relatorio_home.html" >
+                    <img src="../icones/5_relatorio.svg" alt="Ícone de relatório">
+                    <h3>Relatório</h3>
+                </a>
+                <a href="javascript:void(0)" id="labButton">
+                    <img src="../icones/6_laboratorio.svg" alt="Ícone de Laboratório">
+                    <h3>Laboratório</h3>
+                </a>
+                <a href="../html_principal/6_sadar.html">
+                    <img src="../icones/19_sadar.svg" alt="Ícone de dashboard">
+                    <h3>Sadar BOT</h3>
+                </a>
+                <a href="../html_principal/7_inserir_comentarios.html">
+                    <img src="../icones/24_chat.svg" alt="Ícone de dashboard">
+                    <h3>Comentários</h3>
+                </a>
+                <a href="javascript:void(0)" id="manutencaoButton">
+                    <img src="../icones/26_maintance.svg" alt="Ícone de dashboard">
+                    <h3>Manutenção</h3>
+                </a>
+            </div>
+        </aside>
+
+        <main>
+            <div class="card-container">
+            </div>
+            <div class="charts-wrapper">
+                <div class="dough-chart-container">
+                    <canvas id="doughnutChart"></canvas>
+                </div>
+                <div class="bar-chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+            <div class="recent-orders">
+                <table id="pivot-table">
+                    <thead>
+                        <tr>
+                            <th>Data e Hora</th>
+                            <th>Área</th>
+                            <th>Equipamento</th>
+                            <th>Unidade</th>
+                            <th>Medida</th>
+                            <th>Variável</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- As linhas da tabela serão inseridas aqui via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <aside id="sidebar-right">
+            <div class="recent-orders">
+                <table id="pivot-table2">
+                    <thead>
+                        <tr>
+                            <th>Medida</th>
+                            <th>Unidade</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- As linhas da tabela serão inseridas aqui via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </aside>
+        
+        
+
+        <div id="loginModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Laboratório</h2>
+                <form id="loginForm">
+                    <label for="username">Usuário:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Entrar</button>
+                </form>
+            </div>
+        </div>
+        <div id="configModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Configurações</h2>
+                <form id="configLoginForm">
+                    <label for="config-username">Usuário:</label>
+                    <input type="text" id="config-username" name="username" required>
+                    <label for="config-password">Senha:</label>
+                    <input type="password" id="config-password" name="password" required>
+                    <button type="submit">Entrar</button>
+                </form>
+            </div>
+        </div>
+        <div id="manutencaoModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Manutenção</h2>
+                <form id="manutencaoLoginForm">
+                    <label for="manutencao-username">Usuário:</label>
+                    <input type="text" id="manutencao-username" name="username" required>
+                    <label for="manutencao-password">Senha:</label>
+                    <input type="password" id="manutencao-password" name="password" required>
+                    <button type="submit">Entrar</button>
+                </form>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/0.00001_modal.js"></script>
+    <script src="../js/0.00002_modal_config.js"></script>
+    <script src="../js/0.00003_modal_manutencao.js"></script>
+    <script src="../js/0.7_cards_inicio.js"></script>
+    <script src="../js/0.71_grafico_barras.js"></script>
+    <script src="../js/0.72_grafico_rosca.js"></script>
+    <script src="../js/14_tabela_inicio.js"></script>
+    <script src="../js/15_tabela_doladodireito_inicio.js"></script>
+    <script>
+        // Pega o nome do usuário da sessionStorage
+        const userName = sessionStorage.getItem('nome_completo');
+
+        // Exibe o nome do usuário no header
+        if (userName) {
+            document.getElementById('userName').innerText = `Bem-vindo, ${userName}`;
+        }
+    </script>
+    <script>
+        // Recarrega a página a cada 1 minuto (60.000ms)
+        setInterval(() => {
+            location.reload();
+        }, 60000);
+    </script>
+
+
+
+
+</body>
+</html>

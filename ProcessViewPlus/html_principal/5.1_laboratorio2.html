@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela Formulário</title>
+    <link rel="stylesheet" href="../css/5.1_laboratorio.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="Logo">
+            </div>
+            <div class="ambiente-select">
+                <label for="ambiente-select">Ambiente:</label>
+                <select id="ambiente-select"></select>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_principal/3_dashboard.html">Ir para Dashboard</a>
+                    <a href="../html_principal/4_relatorio_home.html">Ir para Relatório</a>
+                    <a href="../html_principal/6_sadar.html">Ir para Sadar Bot</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="recent-orders">
+            <table id="pivot-table">
+                <thead>
+                    <tr>
+                        <th>Data e Hora</th>
+                        <th>Área</th>
+                        <th>Equipamento</th>
+                        <th>Unidade</th>
+                        <th>Medida</th>
+                        <th>Variável</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Linhas geradas dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="../js/0.6.1_laboratorio2.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Barras</title>
+    <link rel="stylesheet" href="../css/2_grafico_barras.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="Logo">
+            </div>
+            <!-- Botão para imprimir página inteira -->
+            <button id="btnPrint" onclick="imprimirGrafico()" class="btn-print">
+                <img src="../icones/21_impressora.svg" alt="Ícone de imprimir" class="btn-icon">
+                Imprimir Gráfico
+            </button>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_graficos/1_tabela_pivot.html">Ir para Tabela Pivot</a>
+                    <a href="../html_graficos/3_grafico_linhas.html">Ir para Gráfico de Linhas</a>
+                    <a href="../html_graficos/4_grafico_pizza.html">Ir para Gráfico de Pizza</a>
+                    <a href="../html_graficos/5_grafico_sankey.html">Ir para Gráfico de Sankey</a>
+                    <a href="../html_graficos/6_grafico_radar.html">Ir para Gráfico de Radar</a>
+                    <a href="../html_graficos/7_grafico_area.html">Ir para Gráfico de Área</a>
+                    <a href="../html_graficos/8_grafico_relatorio.html">Ir para Relatório</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+    
+    <main>
+        <div id="chart-container">
+            <canvas id="barChartCanvas"></canvas>
+        </div>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/2_grafico_barras.js"></script>
+    <script>
+        // Função para imprimir apenas o gráfico
+        function imprimirGrafico() {
+            // Selecionar o elemento do gráfico de barras
+            const canvas = document.getElementById('barChartCanvas');
+            
+            // Criar uma nova janela e injetar o conteúdo para impressão
+            const janelaImpressao = window.open('', '_blank', 'width=800,height=600');
+            
+            janelaImpressao.document.write(`
+                <!DOCTYPE html>
+                <html lang="pt-BR">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Gráfico de Barras</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
+                        img { max-width: 100%; height: auto; }
+                    </style>
+                </head>
+                <body>
+                    <h1>Gráfico de Barras</h1>
+                    <img src="${canvas.toDataURL()}" alt="Gráfico de Barras">
+                </body>
+                </html>
+            `);
+
+            // Aguarde o carregamento completo do conteúdo e inicie a impressão
+            janelaImpressao.document.close();
+            janelaImpressao.onload = function() {
+                janelaImpressao.print();
+                janelaImpressao.close();
+            };
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gráfico de Sankey</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="../css/5_grafico_sankey.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="Logo">
+            </div>
+            <button id="btnPrint" onclick="imprimirGrafico()" class="btn-print">
+                <img src="../icones/21_impressora.svg" alt="Ícone de imprimir" class="btn-icon">
+                Imprimir Gráfico
+            </button>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_graficos/1_tabela_pivot.html">Ir para Tabela Pivot</a>
+                    <a href="../html_graficos/2_grafico_barras.html">Ir para Gráfico de Barras</a>
+                    <a href="../html_graficos/3_grafico_linhas.html">Ir para Gráfico de Linhas</a>
+                    <a href="../html_graficos/4_grafico_pizza.html">Ir para Gráfico de Pizza</a>
+                    <a href="../html_graficos/6_grafico_radar.html">Ir para Gráfico de Radar</a>
+                    <a href="../html_graficos/7_grafico_area.html">Ir para Gráfico de Área</a>
+                    <a href="../html_graficos/8_grafico_relatorio.html">Ir para Relatório</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+    
+    <main>
+        <div id="sankey_multiple"></div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/5_grafico_sankey.js"></script>
+    <script>
+        function imprimirGrafico() {
+        // Abrir nova janela para impressão
+        const conteudo = document.getElementById('sankey_multiple').innerHTML;
+        const janelaImpressao = window.open('', '_blank', 'width=800,height=600');
+        janelaImpressao.document.write(`
+            <!DOCTYPE html>
+            <html lang="pt-BR">
+            <head>
+                <meta charset="UTF-8">
+                <title>Gráfico Sankey</title>
+                <style>
+                    body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
+                    #sankey_multiple { width: 100%; height: 100%; }
+                </style>
+            </head>
+            <body>
+                <div id="sankey_multiple">${conteudo}</div>
+            </body>
+            </html>
+        `);
+        janelaImpressao.document.close();
+        janelaImpressao.print();
+        janelaImpressao.close();
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Linhas</title>
+    <link rel="stylesheet" href="../css/3_grafico_linhas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="Logo">
+            </div>
+            <!-- Botão para imprimir o gráfico de linhas -->
+            <button id="btnPrint" onclick="window.print()" class="btn-print">
+                <img src="../icones/21_impressora.svg" alt="Ícone de imprimir" class="btn-icon">
+                Imprimir Página
+            </button>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_graficos/1_tabela_pivot.html">Ir para Tabela Pivot</a>
+                    <a href="../html_graficos/2_grafico_barras.html">Ir para Gráfico de Barras</a>
+                    <a href="../html_graficos/4_grafico_pizza.html">Ir para Gráfico de Pizza</a>
+                    <a href="../html_graficos/5_grafico_sankey.html">Ir para Gráfico de Sankey</a>
+                    <a href="../html_graficos/6_grafico_radar.html">Ir para Gráfico de Radar</a>
+                    <a href="../html_graficos/7_grafico_area.html">Ir para Gráfico de Área</a>
+                    <a href="../html_graficos/8_grafico_relatorio.html">Ir para Relatório</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+
+    <main>
+        <div id="line_chart">
+            <svg></svg>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.min.js"></script>
+    <script src="../js/3_grafico_linhas.js"></script>
+
+    <script>
+        // Função para imprimir o gráfico de linhas
+        function printChart() {
+        const svgElement = document.querySelector('#line_chart svg');
+        const svgData = new XMLSerializer().serializeToString(svgElement);
+
+        const printWindow = window.open('', '_blank', 'width=800,height=600');
+            printWindow.document.write(`
+            <!DOCTYPE html>
+            <html lang="pt-BR">
+            <head>
+                <meta charset="UTF-8">
+                <title>Gráfico de Linhas</title>
+                <style>
+                    body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
+                    svg { width: 100%; height: auto; }
+                </style>
+            </head>
+            <body>
+                <h1>Gráfico de Linhas</h1>
+                <div>${svgData}</div>
+            </body>
+            </html>
+        `);
+
+        printWindow.document.close();
+        printWindow.onload = function() {
+            printWindow.print();
+            printWindow.close();
+        };
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Área</title>
+    <link rel="stylesheet" href="../css/7_grafico_area.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="Logo">
+            </div>
+            <button id="btnPrint" onclick="imprimirGraficoLinhas()" class="btn-print">
+                <img src="../icones/21_impressora.svg" alt="Ícone de imprimir" class="btn-icon">
+                Imprimir Gráfico
+            </button>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_graficos/1_tabela_pivot.html">Ir para Tabela Pivot</a>
+                    <a href="../html_graficos/2_grafico_barras.html">Ir para Gráfico de Barras</a>
+                    <a href="../html_graficos/3_grafico_linhas.html">Ir para Gráfico de Linhas</a>
+                    <a href="../html_graficos/4_grafico_pizza.html">Ir para Gráfico de Pizza</a>
+                    <a href="../html_graficos/5_grafico_sankey.html">Ir para Gráfico de Sankey</a>
+                    <a href="../html_graficos/6_grafico_radar.html">Ir para Gráfico de Radar</a>
+                    <a href="../html_graficos/8_grafico_relatorio.html">Ir para Relatório</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+    
+    <main>
+        <div id="line-chart-container">
+            <canvas id="lineChartCanvas1"></canvas>
+        </div>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/7_grafico_area.js"></script>
+    <script src="../js/7.1_imprimir_grafico_area.js"></script>
+</body>
+</html>

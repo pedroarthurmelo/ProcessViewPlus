@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remover Cadastro</title>
+    <link rel="stylesheet" href="../css/0.8_remover_cadastro.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="">
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside id="sidebar-left">
+            <div class="sidebar">
+                <a href="../html_principal/1_configuracoes.html">
+                    <img src="../icones/1_login.svg" alt="Ícone de Áreas">
+                    <h3>Novo Cadastro</h3>
+                </a>
+                <a href="../html_principal/1.5_remover_cadastro.html" class="active">
+                    <img src="../icones/20_permissoes.svg" alt="Ícone de Dashboard">
+                    <h3>Remover Cadastro</h3>
+                </a>
+                <a href="../html_principal/1.4_cargo.html">
+                    <img src="../icones/1_login.svg" alt="Ícone de Áreas">
+                    <h3>Novo Cargo</h3>
+                </a>
+            </div>
+        </aside>
+
+        <main>
+            <div class="remove-container">
+                <h1>Remover Usuário</h1>
+                <div class="user-list">
+                    <label for="usuarios">Selecione um usuário:</label>
+                    <select id="usuarios" name="usuarios" required>
+                        <!-- Usuários serão preenchidos via AJAX -->
+                    </select>
+                </div>
+                <button id="remover-usuario" class="submit-button">Remover</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/0.01_remover_usuario.js"></script>
+</body>
+</html>

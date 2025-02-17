@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Dados</title>
+    <link rel="stylesheet" href="../css/0.91_manutencao.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="Logo">
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_principal/3_dashboard.html">Ir para Dashboard</a>
+                    <a href="../html_principal/4_relatorio_home.html">Ir para Relatório</a>
+                    <a href="../html_principal/6_sadar.html">Ir para Sadar Bot</a>
+                    <a href="../html_principal/7_inserir_comentarios.html">Ir para Comentários</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+
+    <div class="container">
+        <aside id="sidebar-left">
+            <div class="sidebar">
+                <a href="../html_principal/9_manutencao.html" class="active">
+                    <img src="../icones/27_plus-solid.svg" alt="Ícone de Áreas">
+                    <h3>Inserir Drivers</h3>
+                </a>
+                <a href="../html_principal/10_vizualizar_manutencao.html" >
+                    <img src="../icones/25_eye.svg" alt="Ícone de Dashboard">
+                    <h3>Vizualizar Drivers</h3>
+                </a>
+                <a href="../html_principal/11_deletar_drivers.html"  >
+                    <img src="../icones/28_lixeira.svg" alt="Ícone de Dashboard">
+                    <h3>Deletar Drivers</h3>
+                </a>
+                <a href="../html_principal/12_documentacao.html"  >
+                    <img src="../icones/30_document.svg" alt="Ícone de Dashboard">
+                    <h3>Inserir Documentação</h3>
+                </a>
+                <a href="../html_principal/13_vizualizar_documentacao.html"  >
+                    <img src="../icones/25_eye.svg" alt="Ícone de Dashboard">
+                    <h3>Vizualizar Documentação</h3>
+                </a>
+                <a href="../html_principal/14_deletar_documentacao.html"  >
+                    <img src="../icones/28_lixeira.svg" alt="Ícone de Dashboard">
+                    <h3>Deletar Documentação</h3>
+                </a>
+            </div>
+        </aside>
+        <main>
+            <h1>Formulário para Inserir Dados</h1>
+            <form id="motorForm">
+                <div class="form-group">
+                    <label for="drive">Drive:</label>
+                    <input type="text" id="drive" name="drive" required>
+                </div>
+                <div class="form-group">
+                    <label for="codigo_cu">Código CU:</label>
+                    <input type="text" id="codigo_cu" name="codigo_cu" required>
+                </div>
+                <div class="form-group">
+                    <label for="codigo_pm">Código PM:</label>
+                    <input type="text" id="codigo_pm" name="codigo_pm" required>
+                </div>
+                <div class="form-group">
+                    <label for="motor">Motor:</label>
+                    <input type="text" id="motor" name="motor" required>
+                </div>
+                <div class="form-group">
+                    <label for="tensao">Tensão:</label>
+                    <input type="number" step="0.1" id="tensao" name="tensao" required>
+                </div>
+                <div class="form-group">
+                    <label for="unidade_tensao">Unidade da Tensão:</label>
+                    <input type="text" id="unidade_tensao" name="unidade_tensao" required>
+                </div>
+                <div class="form-group">
+                    <label for="corrente">Corrente:</label>
+                    <input type="number" step="0.1" id="corrente" name="corrente" required>
+                </div>
+                <div class="form-group">
+                    <label for="unidade_corrente">Unidade da Corrente:</label>
+                    <input type="text" id="unidade_corrente" name="unidade_corrente" required>
+                </div>
+                <div class="form-group">
+                    <label for="potencia">Potência:</label>
+                    <input type="number" step="0.1" id="potencia" name="potencia" required>
+                </div>
+                <div class="form-group">
+                    <label for="unidade_potencia">Unidade da Potência:</label>
+                    <input type="text" id="unidade_potencia" name="unidade_potencia" required>
+                </div>
+                <div class="form-group">
+                    <label for="rotacao">Rotação:</label>
+                    <input type="number" id="rotacao" name="rotacao" required>
+                </div>
+                <div class="form-group">
+                    <label for="unidade_rotacao">Unidade da Rotação:</label>
+                    <input type="text" id="unidade_rotacao" name="unidade_rotacao" required>
+                </div>
+                <div class="form-group">
+                    <label for="frequencia">Frequência:</label>
+                    <input type="number" id="frequencia" name="frequencia" required>
+                </div>
+                <div class="form-group">
+                    <label for="unidade_frequencia">Unidade da Frequência:</label>
+                    <input type="text" id="unidade_frequencia" name="unidade_frequencia" required>
+                </div>
+                <div class="form-group full-width">
+                    <button type="button" id="submitBtn">Enviar</button>
+                </div>
+            </form>
+            <div id="response"></div>
+            
+        </main>
+    
+
+    <script src="../js/10_inserir_manutencao.js"></script>
+</body>
+</html>

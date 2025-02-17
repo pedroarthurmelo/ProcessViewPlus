@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela Pivot</title>
+    <link rel="stylesheet" href="../css/1_tabela_pivot.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="Logo">
+            </div>
+            <!-- Botão de Imprimir -->
+            <button id="btnPrint" onclick="imprimirTabela()" class="btn-print">
+                <img src="../icones/21_impressora.svg" alt="Ícone de imprimir" class="btn-icon">
+                Imprimir Tabela
+            </button>
+            <button id="btnExportCSV" onclick="exportarCSV()" class="btn-print">
+                <img src="../icones/21_impressora.svg" class="btn-icon">
+                Exportar em CSV
+            </button>
+            
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_graficos/2_grafico_barras.html">Ir para Gráfico de Barras</a>
+                    <a href="../html_graficos/3_grafico_linhas.html">Ir para Gráfico de Linhas</a>
+                    <a href="../html_graficos/4_grafico_pizza.html">Ir para Gráfico de Pizza</a>
+                    <a href="../html_graficos/5_grafico_sankey.html">Ir para Gráfico de Sankey</a>
+                    <a href="../html_graficos/6_grafico_radar.html">Ir para Gráfico de Radar</a>
+                    <a href="../html_graficos/7_grafico_area.html">Ir para Gráfico de Área</a>
+                    <a href="../html_graficos/8_grafico_relatorio.html">Ir para Relatório</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+    
+    <main>
+        <div class="recent-orders">
+            <div id="search-input-wrapper">
+                <input type="text" id="search-input" placeholder="Pesquise na tabela"/>
+                <img src="../icones/22_lupa.svg" alt="Ícone de login">
+            </div>
+            <!-- Tabela que será impressa e exportada -->
+            <table id="pivot-table">
+                <thead>
+                    <tr>
+                        <th>Data e Hora</th>
+                        <th>Área</th>
+                        <th>Equipamento</th>
+                        <th>Unidade</th>
+                        <th>Medida</th>
+                        <th>Variável</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As linhas da tabela serão inseridas aqui via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="../js/1_tabela_pivot.js"></script>
+
+    <script>
+        function imprimirTabela() {
+            var conteudo = document.getElementById("pivot-table").outerHTML;
+            var janela = window.open('', '', 'height=400,width=600');
+            
+            // Criar um conteúdo HTML apenas com a tabela
+            janela.document.write('<html><head><title>Tabela</title><style>');
+            janela.document.write('body { font-family: Arial, sans-serif; padding: 20px; }');
+            janela.document.write('table { width: 100%; border-collapse: collapse; }');
+            janela.document.write('table, th, td { border: 1px solid black; }');
+            janela.document.write('th, td { padding: 8px; text-align: left; }');
+            janela.document.write('</style></head><body>');
+            janela.document.write(conteudo);
+            janela.document.write('</body></html>');
+            janela.document.close();
+            janela.print();
+        }
+
+        function exportarCSV() {
+            let tabela = document.getElementById("pivot-table");
+            let linhas = tabela.querySelectorAll("tr");
+            let csvContent = [];
+
+            linhas.forEach(linha => {
+                let colunas = linha.querySelectorAll("th, td");
+                let linhaCSV = [];
+                
+                colunas.forEach((celula, index) => {
+                    let texto = celula.innerText.trim().replace(/"/g, '""'); // Remove espaços extras e escapa aspas
+                    
+                    // Se for a primeira coluna (Data e Hora), forçar como texto com tab (\t) no início
+                    if (index === 0) {
+                        texto = `\t${texto}`;
+                    }
+
+                    linhaCSV.push(texto); // Adiciona ao array da linha
+                });
+
+                csvContent.push(linhaCSV.join(";")); // Usa ponto e vírgula como separador
+            });
+
+            let csvString = "\uFEFF" + csvContent.join("\n"); // Adiciona BOM para UTF-8
+            let blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "tabela_pivot.csv";
+            link.style.display = "none";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function exportarCSV() {
+            let tabela = document.getElementById("pivot-table");
+            let linhas = tabela.querySelectorAll("tr");
+            let csvContent = [];
+
+            linhas.forEach(linha => {
+                let colunas = linha.querySelectorAll("th, td");
+                let linhaCSV = [];
+                
+                colunas.forEach((celula, index) => {
+                    let texto = celula.innerText.trim().replace(/"/g, '""'); // Remove espaços extras e escapa aspas
+
+                    // Se for a primeira coluna (Data e Hora), envolver entre aspas duplas
+                    if (index === 3) {
+                        texto = `"${texto}"`;
+                    }
+
+                    linhaCSV.push(texto); // Adiciona ao array da linha
+                });
+
+                csvContent.push(linhaCSV.join(";")); // Usa ponto e vírgula como separador
+            });
+
+            let csvString = "\uFEFF" + csvContent.join("\n"); // Adiciona BOM para UTF-8
+            let blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "comentarios.csv";
+            link.style.display = "none";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório</title>
+    <link rel="stylesheet" href="../css/0.3_relatorio_home.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="Logo">
+            </div>
+            <button id="btnPrint" onclick="imprimirTabela()" class="btn-print">
+                <img src="../icones/21_impressora.svg" alt="Ícone de imprimir" class="btn-icon">
+                Imprimir Gráfico
+            </button>
+            <button id="btnExportCSV" onclick="exportarCSV()" class="btn-print">
+                <img src="../icones/21_impressora.svg" class="btn-icon">
+                Exportar em CSV
+            </button>
+            <div class="date-filters">
+                <label for="data-inicio">Data Início:</label>
+                <input type="date" id="data-inicio">
+                
+                <label for="data-fim">Data Fim:</label>
+                <input type="date" id="data-fim">
+            </div>
+            <div class="ambiente-select">
+                <label for="ambiente-select">Ambiente:</label>
+                <select id="ambiente-select"></select>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_principal/3_dashboard.html">Ir para Dashboard</a>
+                    <a href="../html_principal/6_sadar.html">Ir para Sadar Bot</a>
+                    <a href="../html_principal/7_inserir_comentarios.html">Ir para Comentários</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+    <main>
+        <div class="recent-orders">
+            <table id="report-table">
+                <thead>
+                    <tr></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </main>
+    
+    <script src="../js/0.5_select_ambiente_relatorio_home.js"></script>
+    
+    <script>
+        function imprimirTabela() {
+            const conteudo = document.getElementById("report-table").outerHTML;
+            const janela = window.open('', '', 'height=400,width=600');
+            janela.document.write('<html><head><title>Imprimir Tabela</title><style>');
+            janela.document.write('body { font-family: Arial, sans-serif; padding: 20px; }');
+            janela.document.write('table { width: 100%; border-collapse: collapse; }');
+            janela.document.write('table, th, td { border: 1px solid black; }');
+            janela.document.write('th, td { padding: 8px; text-align: left; }');
+            janela.document.write('</style></head><body>');
+            janela.document.write(conteudo);
+            janela.document.write('</body></html>');
+            janela.document.close();
+            janela.print();
+        }
+
+        function exportarCSV() {
+            let tabela = document.getElementById("report-table");
+            let linhas = tabela.querySelectorAll("tr");
+            let csvContent = [];
+
+            linhas.forEach(linha => {
+                let colunas = linha.querySelectorAll("th, td");
+                let linhaCSV = [];
+                
+                colunas.forEach((celula, index) => {
+                    let texto = celula.innerText.trim().replace(/"/g, '""'); // Remove espaços extras e escapa aspas
+                    
+                    // Se for a primeira coluna (Data e Hora), forçar como texto com tab (\t) no início
+                    if (index === 0) {
+                        texto = `\t${texto}`;
+                    }
+
+                    linhaCSV.push(texto); // Adiciona ao array da linha
+                });
+
+                csvContent.push(linhaCSV.join(";")); // Usa ponto e vírgula como separador
+            });
+
+            let csvString = "\uFEFF" + csvContent.join("\n"); // Adiciona BOM para UTF-8
+            let blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "relatorio.csv";
+            link.style.display = "none";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

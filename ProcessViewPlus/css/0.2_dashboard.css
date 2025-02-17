@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* --root variaveis */
+:root {
+    --color-primary: #001aff;
+    --color-danger: #001aff;
+    --color-sucess: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-info-light: #dce1eb;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --color-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-white);
+}
+
+/* DARK THEME VARIABLES */
+.dark-theme-variables {
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+/* Reseta os estilos padrões */
+/* deixa os ahref organizado */
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+/* aumenta tamanho da letra */
+html {
+    font-size: 14px;
+}
+
+/* arrumou a letra e o fundo e o tamanho da tela eu acho */
+body {
+    width: 100vw;
+    height: 1vw;
+    font-family: poppins, sans-serif;
+    font-size: 0.88rem;
+    background: #caccdd;
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+    
+}
+
+.container{
+    display: grid;
+    width: 100%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 23rem;
+
+}
+
+
+a {
+    color: var(--color-dark);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 0.87rem;
+}
+
+h4 {
+    font-size: 0.8rem;
+}
+
+h5 {
+    font-size: 0.77rem;
+}
+
+small {
+    font-size: 0.75rem;
+}
+/* ===============================================HEADER======================================= */
+.profile-photo {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.text-muted {
+    color: var(--color-info-dark);
+}
+
+.danger {
+    color: var(--color-danger);
+}
+
+.sucess {
+    color: var(--color-sucess);
+}
+
+.warning {
+    color: var(--color-warning);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 65px;
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-light);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header .logo img {
+    width: 60px;
+    height: 35px;
+}
+
+.header .ambiente-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 7rem;
+    gap: 0.5rem;
+}
+
+.header .ambiente-selector select {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--color-light);
+    border-radius: var(--border-radius-1);
+    outline: none;
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    transition: all 0.3s ease;
+    align-items: center;
+    justify-content: center;
+}
+
+.header .ambiente-selector select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
+}
+
+.header .logo h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.header .logo .danger {
+    color: var(--color-danger);
+}
+
+.header .close {
+    cursor: pointer;
+}
+
+.header .close span {
+    font-size: 2rem;
+    color: var(--color-dark);
+    transition: color 0.3s ease;
+}
+
+.header .close span:hover {
+    color: var(--color-primary);
+}
+
+/* ====================================================== Dashboard ================================================= */
+
+main h2 {
+    margin-top: 0.5rem;
+}
+
+main .ambiente-selector{
+    text-align: center;
+    margin-left: 2rem;
+}
+main .classes-container {
+    display: flex; /* Permite que as caixinhas ocupem várias linhas */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    gap: 2rem; /* Espaçamento entre as caixinhas */
+}
+
+main .classes-container > div {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    margin-top: 1rem;
+    transition: all 300ms ease;
+    
+}
+main .classes-container > div:hover{
+    box-shadow: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+}
+
+
+
+.chart-container-wrapper {
+    display: flex;
+    justify-content: space-between; /* Para garantir que os gráficos ocupem o espaço igualmente */
+    width: 98vw; /* Ajuste para controlar a largura */
+    height: 70vh;  /* Certifique-se de que ocupa toda a largura disponível */
+    margin-top: 2rem;
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--color-border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.chart-container,
+.line-chart-container {
+    width: 47%; /* Ajuste a largura para garantir que ambos os gráficos caibam na mesma linha */
+    height: 60vh;
+    margin-top: 1rem;  /* A altura permanece a mesma */
+    box-sizing: border-box; /* Para garantir que o padding não afete a largura total */
+}
+
+
+/*tela menu*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    background-color: #001aff;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adiciona transição suave */
+}
+
+.dropdown-button:hover {
+    background-color: #0000cc; /* Cor de fundo ao passar o mouse */
+    color: #e0e0e0; /* Cor do texto ao passar o mouse */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    right: 0; /* Alinha para a esquerda */
+    left: auto; /* Remove alinhamento da direita */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 180px; /* Ajuste conforme necessário */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda para diferenciar os elementos */
+    border-radius: 8px; /* Arredondamento das bordas */
+    background-color: transparent; /* Remove o fundo branco */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional para destacar o card */
+    text-align: center; /* Centraliza o conteúdo */
+    font-weight: bold;
+}
+
+
+
+
+
+.card-body img {
+    width: 35px; /* Define o tamanho do ícone */
+    height: auto; /* Mantém a proporção do ícone */
+    margin-bottom: 10px;
+}
+
+.card-body h3 {
+    font-size: 14px; /* Ajuste o tamanho do texto */
+    margin: 5px 0;
+}
+
+.card-body p {
+    font-size: 14px; /* Ajuste o tamanho do texto */
+    color: #007bff;
+    margin: 0;
+}
+
+
+.header .date-filters {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+}
+
+/* Label for Date Inputs */
+.header .date-filters label {
+    font-size: 1rem;
+    color: var(--color-dark);
+}
+
+/* Date Input Styling */
+.header .date-filters input[type="date"] {
+    display: inline-block;
+    background: var(--color-light);
+    color: var(--color-dark);
+    border: none;
+    border-radius: var(--border-radius-1);
+    padding: 0.5rem 1.6rem;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* Focus Effect for Date Inputs */
+.header .date-filters input[type="date"]:focus {
+    border: 2px solid var(--color-primary);
+    background: var(--color-light-hover);
+}
+
+
+
+
+
+
+
+

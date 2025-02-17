@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Dados</title>
+    <link rel="stylesheet" href="../css/0.94_documentacao.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="Logo">
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_principal/3_dashboard.html">Ir para Dashboard</a>
+                    <a href="../html_principal/4_relatorio_home.html">Ir para Relatório</a>
+                    <a href="../html_principal/6_sadar.html">Ir para Sadar Bot</a>
+                    <a href="../html_principal/7_inserir_comentarios.html">Ir para Comentários</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+
+    <div class="container">
+        <aside id="sidebar-left">
+            <div class="sidebar">
+                <a href="../html_principal/9_manutencao.html">
+                    <img src="../icones/27_plus-solid.svg" alt="Ícone de Áreas">
+                    <h3>Inserir Drivers</h3>
+                </a>
+                <a href="../html_principal/10_vizualizar_manutencao.html">
+                    <img src="../icones/25_eye.svg" alt="Ícone de Dashboard">
+                    <h3>Vizualizar Drivers</h3>
+                </a>
+                <a href="../html_principal/11_deletar_drivers.html">
+                    <img src="../icones/28_lixeira.svg" alt="Ícone de Dashboard">
+                    <h3>Deletar Drivers</h3>
+                </a>
+                <a href="../html_principal/12_documentacao.html" class="active">
+                    <img src="../icones/30_document.svg" alt="Ícone de Dashboard">
+                    <h3>Inserir Documentação</h3>
+                </a>
+                <a href="../html_principal/13_vizualizar_documentacao.html">
+                    <img src="../icones/25_eye.svg" alt="Ícone de Dashboard">
+                    <h3>Vizualizar Documentação</h3>
+                </a>
+                <a href="../html_principal/14_deletar_documentacao.html">
+                    <img src="../icones/28_lixeira.svg" alt="Ícone de Dashboard">
+                    <h3>Deletar Documentação</h3>
+                </a>
+            </div>
+        </aside>
+        <main>
+            <h1>Formulário para Inserir Dados do Projeto</h1>
+            <form id="projectForm">
+                <div class="form-group">
+                    <label for="cliente">Cliente:</label>
+                    <input type="text" id="cliente" name="cliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="projeto">Projeto:</label>
+                    <input type="text" id="projeto" name="projeto" required>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição:</label>
+                    <input type="text" id="descricao" name="descricao" required>
+                </div>
+                <div class="form-group full-width">
+                    <button type="button" id="submitBtn">Enviar</button>
+                </div>
+            </form>
+            <div id="response"></div>
+        </main>
+    </div>
+
+    <script src="../js/13_documentacao.js"></script>
+</body>
+</html>

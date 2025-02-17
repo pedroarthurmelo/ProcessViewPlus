@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SADAR - Sistema Automático de Diagnósticos e Registros</title>
+    <link rel="stylesheet" href="../css/0_login.css">
+</head>
+
+<body>
+    <header>
+        <h2 class="logo">Process View Plus<br></h2>
+        <div class="info">
+            <p id="current-time">Horário: --:--</p>
+            <p id="weather-info">Clima: --</p>
+            <div class="city-selector">
+                <input type="text" id="city-input" placeholder="Digite sua cidade" />
+                <button id="fetch-weather-btn">Buscar Clima</button>
+            </div>
+        </div>
+        <nav class="navigation">
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+    
+    <div class="wrapper">
+        <span class="icon-close">&times;</span>
+
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="#">
+                <div class="input-box">
+                    <img src="../icones/1_login.svg" alt="Login">
+                    <input type="mail" required>
+                    <label>Login</label>
+                </div>
+                <div class="input-box">
+                    <img src="../icones/2_senha.svg" alt="Login">
+                    <input type="password" required>
+                    <label>Senha</label>
+                </div>
+                <div class="remember-forgot">
+                </div>
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <strong>SADAR; Socart Software</strong></p>
+            <p>&copy;2025; Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="../js/0.001_login.js"></script>
+</body>
+</html>

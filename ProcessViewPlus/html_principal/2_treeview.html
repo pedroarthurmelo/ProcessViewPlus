@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta</title>
+    <link rel="stylesheet" href="../css/0.1_treeview.css">
+    <link rel="stylesheet" href="../css/0.01_modal.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="">
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0)" id="configButton">Ir para Configurações</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div>            
+        </div>
+    </header>
+    <div class="container">
+        <aside id="sidebar-left">
+            <div class="sidebar">
+                <a href="../html_principal/15_inicio.html">
+                    <img src="../icones/31_casa.svg" alt="Ícone de login">
+                    <h3>Início</h3>
+                </a>
+                <a href="../html_principal/2_treeview.html" class="active">
+                    <img src="../icones/3_areas.svg" alt="Ícone de login">
+                    <h3>Consulta</h3>
+                </a>
+                <a href="../html_principal/3_dashboard.html" >
+                    <img src="../icones/4_dashboard.svg" alt="Ícone de dashboard">
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="../html_principal/4_relatorio_home.html" >
+                    <img src="../icones/5_relatorio.svg" alt="Ícone de relatório">
+                    <h3>Relatório</h3>
+                </a>
+                <a href="javascript:void(0)" id="labButton">
+                    <img src="../icones/6_laboratorio.svg" alt="Ícone de Laboratório">
+                    <h3>Laboratório</h3>
+                </a>
+                <a href="../html_principal/6_sadar.html">
+                    <img src="../icones/19_sadar.svg" alt="Ícone de dashboard">
+                    <h3>Sadar BOT</h3>
+                </a>
+                <a href="../html_principal/7_inserir_comentarios.html">
+                    <img src="../icones/24_chat.svg" alt="Ícone de dashboard">
+                    <h3>Comentários</h3>
+                </a>
+                <a href="javascript:void(0)" id="manutencaoButton">
+                    <img src="../icones/26_maintance.svg" alt="Ícone de dashboard">
+                    <h3>Manutenção</h3>
+                </a>
+            </div>
+        </aside>
+        <main>
+            <div class="treeview-container">
+                <h2>Áreas</h2>
+                <form id="data-form">
+                    <label for="data_inicio">Data Início:</label>
+                    <div class="date">
+                        <input type="date" id="data_inicio" name="data_inicio">
+                    </div>
+                    
+                    <label for="hora_inicio">Hora Início:</label>
+                    <div class="time">
+                        <input type="time" id="hora_inicio" name="hora_inicio" value="00:00">
+                    </div>
+                    
+                    <label for="data_fim">Data Fim:</label>
+                    <div class="date">
+                        <input type="date" id="data_fim" name="data_fim">
+                    </div>
+                    
+                    <label for="hora_fim">Hora Fim:</label>
+                    <div class="time">
+                        <input type="time" id="hora_fim" name="hora_fim" value="23:59">
+                    </div>
+                    
+                    <ul id="treeView"></ul>
+                </form>
+            </div>
+        </main>
+        <aside id="sidebar-right">
+            <div class="sidebar">
+                <div class="updates">
+                    <button type="submit" form="data-form" class="submit-btn" id="generate-pivot-table">
+                        <img src="../icones/7_tabela_pivot.svg" alt="Tabela Pivot"> Gerar Tabela Pivot
+                    </button>
+                    <button type="submit" form="data-form" class="submit-btn" id="generate-bar-chart">
+                        <img src="../icones/8_grafico_barras.svg" alt="Gráfico de Barras"> Gerar Gráfico de Barras
+                    </button>
+                    <button type="submit" form="data-form" class="submit-btn" id="generate-line-chart">
+                        <img src="../icones/9_grafico_linhas.svg" alt="Gráfico de Linhas"> Gerar Gráfico de Linhas
+                    </button>
+                    <button type="submit" form="data-form" class="submit-btn" id="generate-pie-chart">
+                        <img src="../icones/10_grafico_pizza.svg" alt="Gráfico de Pizza"> Gerar Gráfico de Pizza
+                    </button>
+                    <button type="submit" form="data-form" class="submit-btn" id="generate-sankey-chart">
+                        <img src="../icones/11_sankey.svg" alt="Gráfico de Sankey"> Gerar Gráfico de Sankey
+                    </button>
+                    <button type="submit" form="data-form" class="submit-btn" id="generate-radar-chart">
+                        <img src="../icones/12_radar.svg" alt="Gráfico de Radar"> Gerar Gráfico de Radar
+                    </button>
+                    <button type="submit" form="data-form" class="submit-btn" id="generate-line-chart1">
+                        <img src="../icones/13_grafico_area.svg" alt="Gráfico de Área"> Gerar Gráfico de Área
+                    </button>
+                    <button type="submit" form="data-form" class="submit-btn" id="generate-report-table">
+                        <img src="../icones/5_relatorio.svg" alt="Relatório"> Gerar Relatório
+                    </button>
+                    <button type="submit" form="data-form" class="submit-btn" id="generate-rosca-chart">
+                        <img src="../icones/29_donut.svg" alt="Gráfico de Rosca"> Gerar Gráfico de Rosca
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <div id="loginModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Laboratório</h2>
+                <form id="loginForm">
+                    <label for="username">Usuário:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Entrar</button>
+                </form>
+            </div>
+        </div>
+        <div id="configModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Configurações</h2>
+                <form id="configLoginForm">
+                    <label for="config-username">Usuário:</label>
+                    <input type="text" id="config-username" name="username" required>
+                    <label for="config-password">Senha:</label>
+                    <input type="password" id="config-password" name="password" required>
+                    <button type="submit">Entrar</button>
+                </form>
+            </div>
+        </div>
+        <div id="manutencaoModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Manutenção</h2>
+                <form id="manutencaoLoginForm">
+                    <label for="manutencao-username">Usuário:</label>
+                    <input type="text" id="manutencao-username" name="username" required>
+                    <label for="manutencao-password">Senha:</label>
+                    <input type="password" id="manutencao-password" name="password" required>
+                    <button type="submit">Entrar</button>
+                </form>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+    <script src="../js/0.1_treeview.js"></script>
+    <script src="../js/0.00001_modal.js"></script>
+    <script src="../js/0.00002_modal_config.js"></script>
+    <script src="../js/0.00003_modal_manutencao.js"></script>
+    <script>
+        // Pega o nome do usuário da sessionStorage
+        const userName = sessionStorage.getItem('nome_completo');
+
+        // Exibe o nome do usuário no header
+        if (userName) {
+            document.getElementById('userName').innerText = `Bem-vindo, ${userName}`;
+        }
+    </script>
+
+
+
+
+</body>
+</html>

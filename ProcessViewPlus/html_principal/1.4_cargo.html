@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Cargo</title>
+    <link rel="stylesheet" href="../css/0.7_cargo.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="">
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div>            
+        </div>
+    </header>
+
+    <div class="container">
+        <aside id="sidebar-left">
+            <div class="sidebar">
+                <a href="../html_principal/1_configuracoes.html">
+                    <img src="../icones/1_login.svg" alt="Ícone de Áreas">
+                    <h3>Novo Cadastro</h3>
+                </a>
+                <a href="../html_principal/1.5_remover_cadastro.html" >
+                    <img src="../icones/20_permissoes.svg" alt="Ícone de Dashboard">
+                    <h3>Remover Cadastro</h3>
+                </a>
+                <a href="../html_principal/1.4_cargo.html" class="active">
+                    <img src="../icones/1_login.svg" alt="Ícone de Áreas">
+                    <h3>Novo Cargo</h3>
+                </a>
+            </div>
+        </aside>
+
+        <main>
+            <h1>Criar Novo Cargo</h1>
+            <form id="form-cargo" method="POST">
+                <label for="nome_cargo">Nome do Cargo:</label>
+                <input type="text" id="nome_cargo" name="nome_cargo" required>
+
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao"></textarea>
+
+                <button type="submit">Criar Cargo</button>
+            </form>
+
+            <div id="message"></div>
+        </main>
+    </div>
+
+    <script src="../js/0.1_criar_cargo.js"></script>
+</body>
+</html>

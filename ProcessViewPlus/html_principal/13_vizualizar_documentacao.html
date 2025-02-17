@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Projetos</title>
+    <link rel="stylesheet" href="../css/0.95_vizualizar_documentacao.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="">
+            </div>
+            <button id="btnPrint" onclick="imprimirTabela()" class="btn-print">
+                <img src="../icones/21_impressora.svg" alt="Ícone de imprimir" class="btn-icon">
+                Imprimir Tabela
+            </button>
+            <button id="btnExportCSV" onclick="exportarCSV()" class="btn-print">
+                <img src="../icones/21_impressora.svg" alt="Ícone CSV" class="btn-icon">
+                Exportar CSV
+            </button>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_principal/3_dashboard.html">Ir para Dashboard</a>
+                    <a href="../html_principal/4_relatorio_home.html">Ir para Relatório</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside id="sidebar-left">
+            <div class="sidebar">
+                <a href="../html_principal/9_manutencao.html">
+                    <img src="../icones/27_plus-solid.svg" alt="Ícone de Áreas">
+                    <h3>Inserir Drivers</h3>
+                </a>
+                <a href="../html_principal/10_vizualizar_manutencao.html">
+                    <img src="../icones/25_eye.svg" alt="Ícone de Dashboard">
+                    <h3>Visualizar Drivers</h3>
+                </a>
+                <a href="../html_principal/11_deletar_drivers.html">
+                    <img src="../icones/28_lixeira.svg" alt="Ícone de Dashboard">
+                    <h3>Deletar Drivers</h3>
+                </a>
+                <a href="../html_principal/12_documentacao.html">
+                    <img src="../icones/30_document.svg" alt="Ícone de Dashboard">
+                    <h3>Inserir Documentação</h3>
+                </a>
+                <a href="../html_principal/13_vizualizar_documentacao.html" class="active">
+                    <img src="../icones/25_eye.svg" alt="Ícone de Dashboard">
+                    <h3>Visualizar Documentação</h3>
+                </a>
+                <a href="../html_principal/14_deletar_documentacao.html">
+                    <img src="../icones/28_lixeira.svg" alt="Ícone de Dashboard">
+                    <h3>Deletar Documentação</h3>
+                </a>
+            </div>
+        </aside>
+
+        <main>
+            <div class="recent-orders">
+                <div id="search-input-wrapper">
+                    <input type="text" id="search-input" placeholder="Pesquise na tabela"/>
+                    <img src="../icones/22_lupa.svg" alt="Ícone de pesquisa">
+                </div>
+                <table id="comentarios-table">
+                    <thead>
+                        <tr>
+                            <th>Data e Hora</th>
+                            <th>Cliente</th>
+                            <th>Projeto</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Os dados serão carregados aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/13_vizualizar_documentacao.js"></script>
+    <script>
+        function imprimirTabela() {
+            var conteudo = document.getElementById("comentarios-table").outerHTML;
+            var janela = window.open('', '', 'height=400,width=600');
+            janela.document.write('<html><head><title>Tabela</title><style>');
+            janela.document.write('body { font-family: Arial, sans-serif; padding: 20px; }');
+            janela.document.write('table { width: 100%; border-collapse: collapse; }');
+            janela.document.write('table, th, td { border: 1px solid black; }');
+            janela.document.write('th, td { padding: 8px; text-align: left; }');
+            janela.document.write('</style></head><body>');
+            janela.document.write(conteudo);
+            janela.document.write('</body></html>');
+            janela.document.close();
+            janela.print();
+        }
+        function exportarCSV() {
+            let tabela = document.getElementById("comentarios-table");
+            let linhas = tabela.querySelectorAll("tr");
+            let csvContent = [];
+
+            linhas.forEach(linha => {
+                let colunas = linha.querySelectorAll("th, td");
+                let linhaCSV = [];
+                
+                colunas.forEach((celula, index) => {
+                    let texto = celula.innerText.trim().replace(/"/g, '""'); // Remove espaços extras e escapa aspas
+                    
+                    // Se for a primeira coluna (Data e Hora), forçar como texto com tab (\t) no início
+                    if (index === 0) {
+                        texto = `\t${texto}`;
+                    }
+
+                    linhaCSV.push(texto); // Adiciona ao array da linha
+                });
+
+                csvContent.push(linhaCSV.join(";")); // Usa ponto e vírgula como separador
+            });
+
+            let csvString = "\uFEFF" + csvContent.join("\n"); // Adiciona BOM para UTF-8
+            let blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "comentarios.csv";
+            link.style.display = "none";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

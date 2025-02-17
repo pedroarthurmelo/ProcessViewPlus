@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Comentários</title>
+    <link rel="stylesheet" href="../css/0.93_deletar_manutencao.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="">
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_principal/3_dashboard.html">Ir para Dashboard</a>
+                    <a href="../html_principal/4_relatorio_home.html">Ir para Relatório</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div>
+                        
+        </div>
+    </header>
+
+    <div class="container">
+        <aside id="sidebar-left">
+            <div class="sidebar">
+                <a href="../html_principal/9_manutencao.html">
+                    <img src="../icones/27_plus-solid.svg" alt="Ícone de Áreas">
+                    <h3>Inserir Drivers</h3>
+                </a>
+                <a href="../html_principal/10_vizualizar_manutencao.html" >
+                    <img src="../icones/25_eye.svg" alt="Ícone de Dashboard">
+                    <h3>Visualizar Drivers</h3>
+                </a>
+                <a href="../html_principal/11_deletar_drivers.html" class="active">
+                    <img src="../icones/28_lixeira.svg" alt="Ícone de Dashboard">
+                    <h3>Deletar Drivers</h3>
+                </a>
+                <a href="../html_principal/12_documentacao.html"  >
+                    <img src="../icones/30_document.svg" alt="Ícone de Dashboard">
+                    <h3>Inserir Documentação</h3>
+                </a>
+                <a href="../html_principal/13_vizualizar_documentacao.html"  >
+                    <img src="../icones/25_eye.svg" alt="Ícone de Dashboard">
+                    <h3>Vizualizar Documentação</h3>
+                </a>
+                <a href="../html_principal/14_deletar_documentacao.html"  >
+                    <img src="../icones/28_lixeira.svg" alt="Ícone de Dashboard">
+                    <h3>Deletar Documentação</h3>
+                </a>
+            </div>
+        </aside>
+
+        <main>
+            <div class="recent-orders">
+                <div id="search-input-wrapper">
+                    <input type="text" id="search-input" placeholder="Delete Drivers"/>
+                    <img src="../icones/22_lupa.svg" alt="Ícone de login">
+                </div>
+                <table id="comentarios-table">
+                    <thead>
+                        <tr>
+                            <th>Data e Hora</th>
+                            <th>Drive</th>
+                            <th>Código CU</th>
+                            <th>Código PM</th>
+                            <th>Motor</th>
+                            <th>Tensão</th>
+                            <th>Corrente</th>
+                            <th>Potência</th>
+                            <th>Rotação</th>
+                            <th>Frequência</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Os dados serão carregados aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/10_apagar_manutencao.js"></script>
+</body>
+</html>

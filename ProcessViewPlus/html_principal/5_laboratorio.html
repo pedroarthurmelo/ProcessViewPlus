@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Dados</title>
+    <link rel="stylesheet" href="../css/0.4_laboratorio.css">
+</head>
+<body>
+    <header class="header">
+        <div class="top">
+            <div class="logo">
+                <img src="../img/auti.png" alt="Logo">
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">Menu</button>
+                <div class="dropdown-content">
+                    <a href="../html_principal/2_treeview.html">Voltar para Áreas</a>
+                    <a href="../html_principal/3_dashboard.html">Ir para Dashboard</a>
+                    <a href="../html_principal/4_relatorio_home.html">Ir para Relatório</a>
+                    <a href="../html_principal/6_sadar.html">Ir para Sadar Bot</a>
+                    <a href="../html_principal/7_inserir_comentarios.html">Ir para Comentários</a>
+                    <a href="../html_principal/0_login.html">Logout</a>
+                </div>
+            </div> 
+        </div>
+    </header>
+    <main>
+        <h1>Formulário para Inserir Dados</h1>
+        <form id="dataForm">
+            <div class="form-group">
+                <label for="nome_ambiente">Nome do Ambiente:</label>
+                <select id="nome_ambiente" name="nome_ambiente" required>
+                    <option value="">Selecione o Ambiente</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="cod">Código:</label>
+                <input type="number" id="cod" name="cod" step="0.01" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="ds_classe">Máquina:</label>
+                <select id="ds_classe" name="ds_classe" required>
+                    <option value="">Selecione a Máquina</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="ds_sufixo">Sufixo:</label>
+                <input type="text" id="ds_sufixo" name="ds_sufixo" readonly>
+            </div>
+    
+            <div class="form-group">
+                <label for="ds_variavel">Descrição da Variável:</label>
+                <input type="text" id="ds_variavel" name="ds_variavel" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="ds_tipo_variavel">Tipo da Variável:</label>
+                <input type="text" id="ds_tipo_variavel" name="ds_tipo_variavel">
+            </div>
+    
+            <div class="form-group">
+                <label for="data_hora">Data e Hora:</label>
+                <input type="datetime-local" id="data_hora" name="data_hora" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="value_input">Valor:</label>
+                <input type="text" id="value_input" name="value_input" required>
+            </div>
+    
+            <div class="form-group full-width">
+                <button type="button" id="submitBtn">Enviar</button>
+            </div>
+        </form>
+        <div id="response"></div>
+    </main>
+    
+
+    <script src="../js/0.6_laboratorio.js"></script>
+</body>
+</html>
